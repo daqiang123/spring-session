@@ -26,16 +26,16 @@ STS运行方式:
 UiApplication.java文件在STS中以Java Application方式运行时，
 生成的\ui\target\classes\static文件夹又被删掉了，
 原因不明，但注释掉以下代码，可以解决此问题：
-<!-- 					<execution> -->
-<!-- 						<id>npm-test</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>npm</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<arguments>run-script e2e</arguments> -->
-<!-- 						</configuration> -->
-<!-- 						<phase>test</phase> -->
-<!-- 					</execution> -->
+<-- 					<execution> -->
+<-- 						<id>npm-test</id> -->
+<-- 						<goals> -->
+<-- 							<goal>npm</goal> -->
+<-- 						</goals> -->
+<-- 						<configuration> -->
+<-- 							<arguments>run-script e2e</arguments> -->
+<-- 						</configuration> -->
+<-- 						<phase>test</phase> -->
+<-- 					</execution> -->
 
 http://localhost:8080/home
 http://localhost:8080/login
