@@ -39,13 +39,13 @@ UiApplication.java文件在STS中以Java Application方式运行时，
 
 http://localhost:8080/home
 http://localhost:8080/login
-user/password
+用户名：user
+密码：password
 
 修改代码，支持POST等方式：
 
 1、修改/spring-session-ui/src/app/home.component.ts
 增加
-const token = data['token'];
 localStorage.setItem('token', token);
 	  
 把http.get('http://localhost:9000', {headers : new HttpHeaders().set('X-Auth-Token', token)})
@@ -61,3 +61,21 @@ localStorage.setItem('token', token);
 4、修改/spring-session-resource/src/main/java/demo/ResourceApplication.java
 把@RequestMapping("/")
 改为：@PostMapping("/")
+
+把
+http.cors().and().authorizeRequests().anyRequest().authenticated();
+改为
+http.cors().and().csrf().disable().authorizeRequests().anyRequest().authenticated();
+
+增加
+@Bean
+CorsConfigurationSource corsConfigurationSource() {
+	CorsConfiguration configuration = new CorsConfiguration();
+	configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
+	configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "PUT", "DELETE"));
+	configuration.setAllowedHeaders(Arrays.asList("x-auth-token", "x-requested-with", "authorization", "Content-Type"));
+	configuration.setMaxAge((long) 3600);
+	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	source.registerCorsConfiguration("/**", configuration);
+	return source;
+}
