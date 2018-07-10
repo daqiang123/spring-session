@@ -45,7 +45,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }, [{provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}], { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [AppService, [{provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}], { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
