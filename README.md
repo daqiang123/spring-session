@@ -79,3 +79,6 @@ CorsConfigurationSource corsConfigurationSource() {
 	source.registerCorsConfiguration("/**", configuration);
 	return source;
 }
+
+大强工作室
+Da Qiang Studio
